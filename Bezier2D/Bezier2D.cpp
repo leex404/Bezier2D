@@ -8,7 +8,6 @@
 
 #define MAX_POINTS_NUM  70  
 //maximum number of point. can be more, but 70 is enough
-
 using namespace std;
 
 vector<int> x_loc = {};
@@ -150,7 +149,7 @@ void drawBezier(vector<int> x, vector<int> y, int num_of_points) {
 
 void drawPixel(int x, int y, int point_size)
 {
-	glViewport(0, 0, (GLsizei)width, (GLsizei)height);
+	//glViewport(0, 0, (GLsizei)width, (GLsizei)height);
 	glEnable(GL_POINT_SMOOTH);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
