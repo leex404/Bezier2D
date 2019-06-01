@@ -16,7 +16,7 @@ int height = 600;
 int width  = 600;
 
 
-void drawBezier_1(vector<int> x, vector<int> y, int num_of_points)
+void drawBezier_1(vector<int> x, vector<int> y)
 {
 	float ax, bx;
 	float ay, by;
@@ -42,7 +42,7 @@ void drawBezier_1(vector<int> x, vector<int> y, int num_of_points)
 	}
 }
 
-void drawBezier_2(vector<int> x, vector<int> y, int num_of_points)
+void drawBezier_2(vector<int> x, vector<int> y)
 {
 	float ax, bx;
 	float ay, by;
@@ -72,7 +72,7 @@ void drawBezier_2(vector<int> x, vector<int> y, int num_of_points)
 	}
 }
 
-void drawBezier_3(vector<int> x, vector<int> y, int num_of_points)
+void drawBezier_3(vector<int> x, vector<int> y)
 {
 	float ax, bx, cx;
 	float ay, by, cy;
@@ -128,8 +128,10 @@ double combinate(int n, int k) //组合数
 }
 
 
-void drawBezier(vector<int> x, vector<int> y, int num_of_points) {
-	
+void drawBezier(vector<int> x, vector<int> y) {
+	if (x.size() == 0)
+		return;
+
 	float px = 0.0, py = 0.0; //point current should draw
 	int n;        //number of points -1
 	float t = 0.0, dt = 0.0005; //t in [0, 1], dt is changes each time in t
@@ -176,23 +178,23 @@ void Display()
 			for(int i = 0; i < x_loc.size(); i++)
 				drawPixel(x_loc[i], y_loc[i], 7);
 			glColor3f(44.0 / 255.0f, 163.0 / 255.0f, 1.0f);
-			drawBezier(x_loc, y_loc, x_loc.size());
+			drawBezier(x_loc, y_loc);
 		}
 		/*
 		if (x_loc.size() % 4 == 0){ //3阶曲线
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			glColor3f(44.0 / 255.0f, 163.0 / 255.0f, 1.0f);
-			drawBezier_3(x_loc, y_loc, 4);
+			drawBezier_3(x_loc, y_loc);
 		}
 		if (x_loc.size() % 3 == 0) {//2阶曲线
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			glColor3f(44.0 / 255.0f, 163.0 / 255.0f, 1.0f);
-			drawBezier_2(x_loc, y_loc, 3);
+			drawBezier_2(x_loc, y_loc);
 		}
 		if (x_loc.size() % 2 == 0) {//1阶曲线
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			glColor3f(44.0 / 255.0f, 163.0 / 255.0f, 1.0f);
-			drawBezier_1(x_loc, y_loc, 2);
+			drawBezier_1(x_loc, y_loc );
 		}
 		*/
 	}
