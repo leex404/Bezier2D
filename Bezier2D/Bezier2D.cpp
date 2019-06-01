@@ -147,7 +147,7 @@ void drawBezier(vector<int> x, vector<int> y, int num_of_points) {
 	}
 }
 
-void drawPixel(int x, int y, int point_size)
+void drawPixel(double x, double y, int point_size)
 {
 	//glViewport(0, 0, (GLsizei)width, (GLsizei)height);
 	glEnable(GL_POINT_SMOOTH);

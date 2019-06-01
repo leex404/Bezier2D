@@ -5,7 +5,7 @@
 #include <Windows.h>
 #include <math.h>
 using namespace std;
-void drawPixel(int x, int y, int);
+void drawPixel(double x, double y, int);
 void drawBezier_1(vector<int> x, vector<int> y, int num_of_points);
 void drawBezier_2(vector<int> x, vector<int> y, int num_of_points);
 void drawBezier_3(vector<int> x, vector<int> y, int num_of_points);
