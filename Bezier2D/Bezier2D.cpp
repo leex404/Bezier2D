@@ -10,8 +10,8 @@
 //maximum number of point. can be more, but 70 is enough
 using namespace std;
 
-vector<int> x_loc = {};
-vector<int> y_loc = {};
+vector<int> x_loc ;
+vector<int> y_loc;
 int height = 600;
 int width  = 600;
 
@@ -134,7 +134,7 @@ void drawBezier(vector<int> x, vector<int> y) {
 
 	float px = 0.0, py = 0.0; //point current should draw
 	int n;        //number of points -1
-	float t = 0.0, dt = 0.0005; //t in [0, 1], dt is changes each time in t
+	float t = 0.0, dt = 0.0001;//0.0005; //t in [0, 1], dt is changes each time in t
 	n = x.size() - 1;
 	while (t <= 1) {
 		for (int i = 0; i <= n; i++) {
@@ -157,7 +157,7 @@ void drawPixel(double x, double y, int point_size)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glPointSize(point_size);
 	glBegin(GL_POINTS);
-	glVertex2d(x, y);
+		glVertex2d(x, y);
 	glEnd();
 }
 
@@ -217,6 +217,19 @@ void Mouse_hit(int button, int state, int x, int y)
 		y_loc.push_back(y);
 		cout << "point location: " << x_loc[x_loc.size() - 1] << " " << y_loc[y_loc.size() - 1] << endl;
 	}
+	if (button == 2 && state == 1){
+	   x_loc.clear();
+	  y_loc.clear();
+	  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	  glutSwapBuffers(); 
+	  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	  glutSwapBuffers(); 
+	  glutPostRedisplay();
+	  cout<<" Clear Screen!"<<endl;
+	}
+	glutSwapBuffers(); 
+	  glutPostRedisplay();
+
 }
 
 void ChangeSize(GLsizei w, GLsizei h)
